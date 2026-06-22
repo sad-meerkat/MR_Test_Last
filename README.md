@@ -24,9 +24,8 @@ Backend Infrastructure: Unity Gaming Services (UGS - Auth, Lobby, Relay, Vivox V
 XR SDKs: XR Interaction Toolkit (XRI 3.3.0) / XR Hands / Meta XR SDK (OVR Integration)
 
 2. 전체 시스템 아키텍처 (Network Architecture)
-본 프로젝트는 중앙 서버 비용을 최소화하고 독립형 기기의 성능을 극대화하기 위해 Client-Host(Listen Server) 구조와 UGS 클라우드 백엔드를 결합하여 설계되었습니다.
-
 <img width="426" height="788" alt="image" src="https://github.com/user-attachments/assets/66ce714c-75ee-41ff-8c29-d8925078513e" />
+본 프로젝트는 중앙 서버 비용을 최소화하고 독립형 기기의 성능을 극대화하기 위해 Client-Host(Listen Server) 구조와 UGS 클라우드 백엔드를 결합하여 설계되었습니다.
 
 2-1. 사용 시나리오 (Use Scenario)
 <img width="962" height="360" alt="image" src="https://github.com/user-attachments/assets/605fbd15-bc31-4cc0-aa39-b6018c9b199c" />
