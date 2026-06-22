@@ -119,6 +119,12 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
         /// <inheritdoc/>
         void Update()
         {
+            Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
+            foreach (Renderer r in allRenderers)
+            {
+                if (r.enabled) r.enabled = false;
+            }
+
             if (!s_Muted)
             {
                 m_MicLoudness = LevelMax();

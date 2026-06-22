@@ -13,6 +13,7 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
 
         [SerializeField]
         protected TableTop m_TableTop;
+        protected GameObject m_PlayerRoot; // Changed: Track the entire setup root
         protected XROrigin m_XROrigin;
         protected TeleportationProvider m_TeleportationProvider;
         protected Transform m_Head;
@@ -37,6 +38,9 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
             m_Rigidbody = GetComponent<Rigidbody>();
 
             m_XROrigin = FindFirstObjectByType<XROrigin>();
+            // Find the common parent (MRInteractionSetup) if it exists, otherwise use XROrigin
+            m_PlayerRoot = m_XROrigin.transform.parent != null ? m_XROrigin.transform.parent.gameObject : m_XROrigin.gameObject;
+            
             m_Head = m_XROrigin.Camera.transform;
 
             m_TeleportationProvider = m_XROrigin.GetComponentInChildren<TeleportationProvider>();
@@ -60,7 +64,7 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
         public void StartSelection(SelectEnterEventArgs args)
         {
             m_InitialTableTransform = transform.localToWorldMatrix;
-            m_InitialPlayerTransform = m_XROrigin.transform.localToWorldMatrix;
+            m_InitialPlayerTransform = m_PlayerRoot.transform.localToWorldMatrix; // Track root
             m_TableVisualsObject.SetActive(true);
         }
 
@@ -102,9 +106,9 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
             m_Rigidbody.MovePosition(transform.position);
             m_Rigidbody.MoveRotation(transform.rotation);
 
-            // Update the player's position and rotation
-            m_XROrigin.transform.position = newPlayerTransform.GetColumn(3);
-            m_XROrigin.transform.rotation = Quaternion.LookRotation(
+            // Update the player root's position and rotation
+            m_PlayerRoot.transform.position = newPlayerTransform.GetColumn(3);
+            m_PlayerRoot.transform.rotation = Quaternion.LookRotation(
                 newPlayerTransform.GetColumn(2),
                 newPlayerTransform.GetColumn(1)
             );

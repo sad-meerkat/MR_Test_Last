@@ -14,7 +14,7 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
         float m_DefaultSeatHeight = -.5f;
 
         [SerializeField]
-        UnityEvent<int> m_OnSeatChanged;
+        public UnityEvent<int> m_OnSeatChanged;
 
         XROrigin m_XROrigin;
 
@@ -30,11 +30,7 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
 
         public void TeleportToSeat(int seatNum)
         {
-            // Check for spectator seat or initial seat
-            if (TableTop.k_CurrentSeat < 0)
-            {
-                TableTop.k_CurrentSeat = 0;
-            }
+            if (TableTop.k_CurrentSeat < 0) TableTop.k_CurrentSeat = 0;
 
             int prevSeat = TableTop.k_CurrentSeat;
             TableTop.k_CurrentSeat = seatNum;
@@ -42,10 +38,20 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
             float currentAngle = GetRotationAngleBasedOnSeatNum(prevSeat);
             float newAngle = GetRotationAngleBasedOnSeatNum(seatNum);
             float rotationAmount = newAngle - currentAngle;
-            m_XROrigin.transform.RotateAround(transform.position, transform.up, rotationAmount);
-            m_OnSeatChanged.Invoke(seatNum);
 
+            // 1. XR Origin 회전
+            m_XROrigin.transform.RotateAround(transform.position, transform.up, rotationAmount);
+
+            // 2. OVRCameraRig 회전 (타입 대신 이름으로 찾기)
+            GameObject ovrRigObj = GameObject.Find("OVRCameraRig");
+            if (ovrRigObj != null)
+            {
+                ovrRigObj.transform.RotateAround(transform.position, transform.up, rotationAmount);
+            }
+
+            m_OnSeatChanged.Invoke(seatNum);
             transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            ResetToSeatDefault();
         }
 
         float GetRotationAngleBasedOnSeatNum(int seatNum)
@@ -78,17 +84,23 @@ namespace UnityEngine.XR.Templates.MRTTabletopAssets
         public void ResetToSeatDefault()
         {
             var seat = m_TableTop.GetSeat(TableTop.k_CurrentSeat);
-
             var seatPosition = seat.position;
-
             seatPosition.y -= m_DefaultSeatHeight;
 
-            if (m_XROrigin == null)
-                FindReferences();
+            if (m_XROrigin == null) FindReferences();
 
             var targetPosition = seatPosition - seat.forward * m_TableTop.seatOffset;
             var targetRotation = seat.rotation;
+
+            // 1. XR Origin 이동
             m_XROrigin.transform.SetPositionAndRotation(targetPosition, targetRotation);
+
+            // 2. OVRCameraRig 이동 (타입 대신 이름으로 찾기)
+            GameObject ovrRigObj = GameObject.Find("OVRCameraRig");
+            if (ovrRigObj != null)
+            {
+                ovrRigObj.transform.SetPositionAndRotation(targetPosition, targetRotation);
+            }
 
             m_TableTop.seatOffset = 0;
         }

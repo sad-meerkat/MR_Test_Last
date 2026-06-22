@@ -17,7 +17,8 @@
         "Unity.TextMeshPro",
         "ParrelSync",
         "Unity.Services.Multiplayer",
-        "Unity.Multiplayer.Playmode"
+        "Unity.Multiplayer.Playmode",
+        "Oculus.VR"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

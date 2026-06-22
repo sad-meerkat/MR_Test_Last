@@ -64,6 +64,14 @@ namespace XRMultiplayer
 
         public virtual void Update()
         {
+            if (m_NetworkPlayer.IsOwner)
+            {
+                if (m_headRend != null && m_headRend.enabled) m_headRend.enabled = false;
+                foreach (var r in m_HeadRends)
+                {
+                    if (r != null && r.enabled) r.enabled = false;
+                }
+            }
             UpdateMouth();
         }
 
