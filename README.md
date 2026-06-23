@@ -1,66 +1,64 @@
-Meta Quest MR Tabletop Battle Sandbox (철권 스타일 1:1 대전)
-본 프로젝트는 금오공과대학교 컴퓨터공학과 'AR·VR프로그래밍-01' 과목 최종 결과물입니다.
+# 🕶️ Meta Quest MR Tabletop Battle (철권 스타일 1:1 대전)
 
-Meta Quest 디바이스 환경에서 단독 구동(On-Device)되는 최첨단 혼합현실(Mixed Reality) 테이블탑 대전 격투 데모입니다. 
-유니티 6 엔진의 최신 XR 및 멀티플레이어 기술 스택을 활용하여 독립형 핸드/컨트롤러 동시 인식(Multimodal SHC), Client-Host Listen Server 멀티플레이 네트워크, 그리고 실시간 물리 테이블 경계 생성 시스템을 체계적으로 융합 구현하였습니다.
+<p align="center">
+  <img src="https://img.shields.io/badge/Unity-6000.4.4f1__(Unity_6)-black?style=flat-square&logo=unity&logoColor=white" alt="Unity 6">
+  <img src="https://img.shields.io/badge/Render_Pipeline-URP-blue?style=flat-square" alt="URP">
+  <img src="https://img.shields.io/badge/Target_Hardware-Meta_Quest_3_/_Pro-black?style=flat-square&logo=meta&logoColor=white" alt="Target Hardware">
+  <img src="https://img.shields.io/badge/Network-Netcode_for_GameObjects-orange?style=flat-square" alt="NGO">
+</p>
 
-프로젝트 개요 (Project Overview)
-과목명: AR·VR프로그래밍-01
+> **금오공과대학교 컴퓨터공학과 'AR·VR프로그래밍-01' 과목 최종 결과물**
+> Meta Quest 디바이스 환경에서 온 디바이스 환경으로 멀티플레이를 즐길 수 있는 혼합현실(MR) 대전 격투의 데모 버전입니다.
+---
 
-개발 기간: 2026.05.01 ~ 2026.06.16 (총 7주, WBS 간트차트 기준 100% 완료)
+## 👥 Members
+| 이동우 | 홍채영 | 장현서 |
+| :---: | :---: | :---: |
+| <img src="https://github.com/Honey0423.png" width="100" height="100" /> | <img src="https://github.com/identicon.png" width="100" height="100" /> | <img src="https://github.com/identicon.png" width="100" height="100" /> |
+| **Main Programmer / Leader** | **UI/UX Designer** | **3D Asset Modeler** |
+| • UGS 서버 인프라 구축<br>• NGO 1대1 동기화 로직<br>• 멀티모달 입력 모드 최적화 | • 대전 UI/UX 시스템 개발<br>• 1인칭 XR 스킬 연동<br>• 시나리오/인터랙션 기획 | • 3D 캐릭터 모델링<br>• 캐릭터 리깅 (Rigging)<br>• 음성 대사 에셋 수집 |
 
-개발 인원 및 역할 분담 (Team):
-이동우(팀장): 프로젝트 게임 컨셉/전체 기획 설계, UGS 서버 인프라 구축 및 멀티플레이어 1대1 대전 시스템 동기화 로직 개발, 멀티모달 입력 모드 최적화, 최종 빌드 및 배포, PPT제작 및 발표
-홍채영: 시나리오 및 주술·기술 상호작용 기획, uGUI World Space 대전 UI/UX(체력바, 타이머, 승패 화면) 시스템 개발, 1인칭 XR 스킬 이펙트 연동 및 버그 수정
-장현서: 블리치(뱌쿠야), 나루토(사스케) 애니메이션 캐릭터 3D 모델링, 리깅(Rigging), 음성 대사 수집
+---
 
-🛠️ Tech Stack & Architecture (기술 스택 및 시스템 구성)
+## 🛠️ 기술 스택
+| Languages | Frameworks/Engines | Networking | Services |
+| :---: | :---: | :---: | :---: |
+| <img src="https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white" /> | <img src="https://img.shields.io/badge/Unity_6-000000?style=flat-square&logo=unity&logoColor=white" /> | <img src="https://img.shields.io/badge/Netcode_NGO-orange?style=flat-square" /> | <img src="https://img.shields.io/badge/UGS_Lobby/Relay-blue?style=flat-square" /> |
 
-1. 기술 스택
+## 📦 프로젝트 관리
+| Collaboration Tools | Project Management Tools |
+| :---: | :---: |
+| <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white" /> | <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" /> |
 
-Unity Engine: 6000.4.4f1 (Unity 6)
-Render Pipeline: Universal Render Pipeline (URP - Performant Mobile XR Profile)
-Target Hardware: Meta Quest 3 / Quest 3S / Quest Pro (Android standalone)
-Multiplayer Network: Unity Netcode for GameObjects (NGO v1.x)
-Backend Infrastructure: Unity Gaming Services (UGS - Auth, Lobby, Relay, Vivox Voice)
-XR SDKs: XR Interaction Toolkit (XRI 3.3.0) / XR Hands / Meta XR SDK (OVR Integration)
+---
 
-3. 전체 시스템 아키텍처 (Network Architecture)
+## 📖 Meta Quest MR Tabletop Battle란?
+"Meta Quest MR Tabletop Battle Sandbox"는 Meta Quest 디바이스에서 단독(Standalone) 구동되는 차세대 혼합현실(Mixed Reality) 1:1 대전 격투 데모입니다. 사용자의 실제 방 환경을 정밀하게 매핑하여 실제 공간에 몰입감 넘치는 미니어처 배틀필드를 구현하여, 플레이어는 컨트롤러와 맨손 트래킹을 통해 원작 애니메이션 캐릭터 아바타를 직관적으로 제어할 수 있음.
 
-<img width="426" height="788" alt="image" src="https://github.com/user-attachments/assets/66ce714c-75ee-41ff-8c29-d8925078513e" />
+---
 
-본 프로젝트는 중앙 서버 비용을 최소화하고 독립형 기기의 성능을 극대화하기 위해 Client-Host(Listen Server) 구조와 UGS 클라우드 백엔드를 결합하여 설계되었습니다.
+## 🧩 핵심 구현 기능
 
-2-1. 사용 시나리오 (Use Scenario)
+1. 혁신적인 멀티모달 게임플레이: 왼손의 물리 컨트롤러로는 캐릭터의 이동 및 이동기(Locomotion)를 정밀하게 제어하고, 오른손은 컨트롤러를 내려놓은 맨손 상태로 핸드 트래킹 제스처를 취해 주술 및 기술을 발동하는 시스템임.
 
-<img width="962" height="360" alt="image" src="https://github.com/user-attachments/assets/605fbd15-bc31-4cc0-aa39-b6018c9b199c" />
+2. 철권 스타일의 대전 룰 체인: 경쟁적 몰입감을 극대화한 3판 2선승제 매치 로직을 통해 실시간 동기화되는 상단 체력바(HP)와 라운드 제한 타이머, 그리고 타격감을 높여주는 실시간 컨트롤러 진동 피드백이 플레이어에게 몰입감을 선사함.
 
-Data & Session Management:
-영속성 데이터: 별도의 외부 무거운 RDB 없이 세션 기반 런타임 동기화로 구동.
+---
 
-세션 데이터: 실시간 방 정보 및 난입 코드, 매칭 대기열 목록은 Unity Lobby Service에서 임시 버퍼로 관리.
+## 🚀 승리 조건 (How to win?)
 
-로컬 스토리지: 플레이어 커스텀 세팅(이름, 아바타 색상)은 클라이언트 기기 로컬에 저장되거나 소스코드 내 BindableVariable 프로퍼티 래퍼로 안전하게 캡슐화.
+### 🥋 대전 플레이어 가이드
+* **상대방 제압:** 대전 제한 시간이 모두 소진되기 전에, 실시간으로 동기화되는 상대방의 HP를 200에서 0으로 먼저 감소시키면 라운드에서 승리합니다.
+* **스킬 제스처 영창:** 오른손으로 정확한 제스처 모양을 취하거나 명확한 가속도(Velocity) 움직임을 주입하면 원작 캐릭터의 특성에 맞는 스킬(예: 치도리, 만해 이펙트 등)이 발동되어 검 휘두르기, 회오리, 번개구, 화염구를 생성해 상대에게 치명타를 입힐 수 있음.
+---
 
-Core Features (핵심 구현 기능)
-1.  독립형 입력 모드 전환 (Independent Hand Modality Switcher)
-비대칭 개별 감지: 양손의 컨트롤러 활성 플래그와 핸드 트래킹 상태를 독립 연산합니다.
-왼손으로는 물리 컨트롤러의 조이스틱을 움직여 캐릭터를 부드럽게 조작(Locomotion)하고, 
-오른손은 컨트롤러를 내려놓고 맨손(Hand Tracking)으로 주술 영창 제스처 및 검 휘두르기 액션을 구사하는 혁신적인 하이브리드 비대칭 조작계를 구축했습니다.
+## 🎮 실행방법
 
-
-실시간 감도 제어: 기기 노이즈 한계치 이상의 미세 움직임 변화(Delta Position Threshold)와 트래킹 플래그 정보를 실시간 비교 분석하여 프레임 저하나 오작동 없는 정밀한 입력 모드 스위칭을 제공합니다.
-
-
-XRI 레이 상호작용 호환: MetaToXRIBridge를 통해 입력 좌표계를 래핑하여, 모드 전환 시 하위 UI 포인터 레이(Ray Interactor)와 그랩 인터랙터가 입력 간섭 없이 정교하게 동적 개폐됩니다.
-
-3.  테이블탑 동적 물리 경계 (Dynamic Tabletop Physics Boundary)
-자동 물리 벽 생성 (TableBoundary.cs): 가상 배틀필드로 지정된 테이블 표면 메쉬(MeshRenderer)의 외곽 Bounds 데이터 및 로컬 스케일을 감지하여 테이블 사면에 완벽히 일치하는 투명 물리 벽(BoxCollider)을 실시간으로 자동 연산/배치합니다.
-인터랙티브 오브젝트 낙하 방지: 물리 중력과 격투 타격 반동에 의해 테이블 위의 미니어처 가상 캐릭터나 상호작용 소품들이 테이블 아래 바닥으로 떨어져 소실되는 버그를 하드웨어 수준에서 완벽하게 차단합니다.
-
-4.  가상 터치 인터랙션 및 철권 룰 체인 (Battle System & UI)
-직관적 물리 버튼 (VRButtonTouch.cs): 핸드 트래킹 메쉬나 컨트롤러 콜라이더가 가상 버튼 표면에 접촉했을 때 트리거 이벤트를 감지하여, 로비 매칭 및 캐릭터 선택(뱌쿠야 / 사스케) 시퀀스를 매끄럽게 연결합니다.
-
-철권 스타일 대전 UI: 월드 스페이스(World Space) 3D UI 기반으로 상단에 플레이어 1, 2의 실시간 동기화 체력바(HP Bar)와 타이머가 배치됩니다. 타이머가 만료되거나 한쪽 HP가 0이 되면 게임이 즉시 종료되며, 판정 후 재경기(R u ready?) 루프로 안전하게 진입합니다.
-
-<img width="724" height="294" alt="image" src="https://github.com/user-attachments/assets/17e9e782-edfc-4ed9-ad21-21f0975698da" />
+### 🛠️ 유니티 에디터를 통한 구동
+1. 저장소를 클론합니다: `git clone https://github.com/sad-meerkat/MR_Test_Last.git`
+2. 클론된 폴더를 Unity Engine 6000.4.4f1 (Unity 6) 버전으로 오픈합니다.
+3. 씬을 활성화합니다: `Assets/Scenes/핸즈 스킬 적용 2.unity`
+4. `File > Build Settings` 메뉴에서 타겟 하드웨어 빌드 플랫폼을 Android로 전환합니다.
+5. `Project Settings > XR Plug-in Management` 설정의 Android 탭에서 Oculus (Meta Quest) 플러그인 프로파일이 체크되어 있는지 확인합니다.
+6. Meta Quest 헤드셋을 PC와 Link 또는 Type-C 케이블로 연결한 뒤 에디터 상단에서 Build and Run을 실행합니다.
+---
